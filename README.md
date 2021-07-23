@@ -1,4 +1,5 @@
 https://www.a-mean-blog.com/ko/blog/MEAN-Stack/_/MEAN-Stack-%EC%86%8C%EA%B0%9C
+
 위 블로그 강좌를 보고 따라해보는 중입니다 🌸
 나중에 다시보기 쉽게 정리 중
 
@@ -8,8 +9,12 @@ https://www.a-mean-blog.com/ko/blog/MEAN-Stack/_/MEAN-Stack-%EC%86%8C%EA%B0%9C
 - command line에서 package들을 npm으로 다운받을 수 있다.
 
 `$npm init` package.json 파일 생성 (의존성 목록 기록)
+
 `$npm install --save [package]` node_modules에 패키지 다운로드
+
 `$npm install` 의존성 리스트에 있는 패키지를 모두 설치한다.
+
+<br/>
 
 #### 우분투에 node.js 설치 [링크](https://itstory.tk/entry/Ubuntu-1604-nodejs-%EC%99%80-npm-%EC%84%A4%EC%B9%98)
 NVM을 이용한 설치방법
@@ -45,9 +50,14 @@ $ npm -v #체크
 - GET, POST, PUT, PATCH, DELETE 메소드가 자주 쓰인다.
 
 `GET` : 서버에게 데이터를 요청한다. 클라이언트로 전달!
+
 `POST` : 서버에게 데이터를 보내고 DB 혹은 서버에 저장해달라고 요청한다.
+
 `PUT` or `PATCH` : 서버에게 데이터 업데이트(수정)를 요청할 때 사용한다.
+
 `DELETE` : DB or 서버에 존재하는 데이터의 삭제를 요청한다.
+
+<br/>
 
 #### Express로 서버 실행하기
 Express는 node.js로 서버를 만드는 프레임워크이다.
@@ -61,8 +71,8 @@ $ npm install --save ejs express mongoose
 ```javascript
 //index.js
 
-let express = require('express'); 
-let app = express();
+var express = require('express'); 
+var app = express();
 
 app.get('/', function(req, res){
     res.send("Hello World!");
@@ -85,9 +95,10 @@ app.get('/', function(req, res){
 `res` response에 관련된 값들과 함수들이 저장되어 있는 객체
 
 서버 실행
-```
-$ node index.js
-```
+
+`$ node index.js`
+
+<br/>
 
 #### Static, Dynamic
 주로 동적사이트에서 일부만 정적인 페이지로 구성하는 경우가 많다.
@@ -100,6 +111,9 @@ EJS = Embedded JavaScript
 
 함수는 ejs를 /views 폴더에서 찾는다.
 ejs는 HTML에 js가 더해진 형태를 갖고 있다. js 코드는 `<% %>`안에 삽입되어야 한다.
+
+
+<br/>
 
 ## 주소록 만들기
 #### 환경변수
@@ -114,6 +128,8 @@ chrome://inspect
 
 `nodemon` : 서버 코드 변경시 자동으로 서버 재시작
 
+<br/>
+
 #### mongo DB 연결
 mongoose 패키지 설치
 
@@ -122,6 +138,8 @@ mongoose 패키지 설치
 mongoose.connect(process.env.MONGO_DB); //.bash_profile에 있는 환경변수를 불러올 수 있다.
 let db = mongoose.connection; // db객체를 가져온다.
 ```
+
+<br/>
 
 #### CRUD와 7 Standard Actions
 **CRUD** = Create, Read, Update, Delete
@@ -140,6 +158,8 @@ let db = mongoose.connection; // db객체를 가져온다.
 
 [삭제]
 - Destroy
+
+<br/>
 
 #### 주소록 Index, New, Create
 form에 정보를 받고 이를 서버에 전달 (new)
