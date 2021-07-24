@@ -2,7 +2,8 @@
 
 var express = require('express');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var app = express();
 
 //db setting (아래 부분은 몇몇 글로벌 설정)
@@ -27,6 +28,7 @@ app.set('view engine', 'ejs'); //express의 view engine에 ejs를 set
 app.use(express.static(__dirname + '/public')); // 서버에 요청이 올 때마다 무조건 콜백함수가 실행됨
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // route의 콜백함수의 req.body에서 form데이터를 사용할 수 있다.
+app.use(methodOverride('_method')); //_method의 쿼리값으로 HTTP method를 바꾼다
 
 //DB schema (어떤 형식으로 정보를 저장할지)
 var contactSchema = mongoose.Schema({
@@ -64,6 +66,38 @@ app.post('/contacts', function(req, res){
     Contact.create(req.body, function(err, contact){
         if(err) return res.json(err);
         res.redirect('/contacts'); // 다시 인덱스 페이지로
+    });
+});
+
+// Contacts - show
+app.get('/contacts/:id', function(req, res){
+    Contact.findOne({_id:req.params.id}, function(err, contact){
+        if(err) return res.json(err);
+        res.render('contacts/show', {contact:contact});
+    });
+});
+
+// Contacts - edit
+app.get('/contacts/:id/edit', function(req, res){
+    Contact.findOne({_id:req.params.id}, function(err, contact){
+        if(err) return res.json(err);
+        res.render('contacts/edit', {contact:contact});
+    });
+});
+
+// Contacts - update
+app.put('/contacts/:id', function(req, res){
+    Contact.findOneAndUpdate({_id:req.params.id}, req.body, function(err, contact){
+      if(err) return res.json(err);
+      res.redirect('/contacts/'+req.params.id);
+    });
+});
+
+// Contacts - destroy
+app.delete('/contacts/:id', function(req, res){
+    Contact.deleteOne({_id:req.params.id}, function(err){
+      if(err) return res.json(err);
+      res.redirect('/contacts');
     });
 });
 

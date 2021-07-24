@@ -13,8 +13,8 @@ https://www.a-mean-blog.com/ko/blog/MEAN-Stack/_/MEAN-Stack-%EC%86%8C%EA%B0%9C
 [주소록 만들기](#주소록-만들기)  
 - [Mongo DB 설치 및 환경변수](#환경변수)   
 - [CRUD와 7 Standard Actions](#crud와-7-standard-actions)
-- 기능 - Index, New, Create
-- 기능 - Show, Edit, Update, Destroy
+- [기능 - Index, New, Create](#주소록-index,-new,-create)
+- [기능 - Show, Edit, Update, Destroy](#주소록-show,-edit,-update,destroy)
 
 ---
 
@@ -197,3 +197,44 @@ views/partials/ 폴더에 중복되는 부분의 코드를 빼놓았다.
 ** 트러블..
 res.redirect('/contacts')가 안된다. 리다이렉트가 안돼~
 왜? 다른 데서는 되는데 처음 페이지 ('/')에서 안된다.
+
+#### 주소록 Show, Edit, Update, Destroy
+
+**[기능 설명]**  
+show - 특정 데이터를 보여준다.  
+edit - 특정 데이터를 수정할 수 있는 form data를 서버로 전달  
+update - 서버가 받은 data로 DB를 수정  
+destroy - 특정 데이터를 DB에서 제거  
+
+**[put, delete는?]**  
+브라우저의 form은 대부분 get과 post 메소드만 허용한다.  
+-> method override를 이용해 이를 우회하는 방법 사용..!  
+`npm install --save method-override`  
+-> query로 method 값을 받아서 request의 HTTP method를 바꿔주는 역할을 한다.  
+
+
+**`show`**
+"contacts/:id"에 **get**요청:  
+- route에서 콜론 위치의 값을 받아 req.params에 넣는다.  
+- 예로 "contacts/1234"가 입력되면 req.params.id에 "1234"를 넣게된다.  
+
+Model.findOne(조건에 해당하는 Object, 콜백함수):  
+- DB에서 해당 모델의 도큐먼트를 1개 찾는 함수  
+- 조건이 {_id:req.params.id}이면 DB의 컬렉션에서 _id가 req.params.id와 일치하는 것을 찾으라는 것이다.  
+
+
+**`edit`**  
+"contacts/:id/edit"에 **get**요청:  
+- show에서 한 것처럼 id로 특정 데이터를 찾아준다.  
+- 결과를 받아서 edit.ejs를 렌더링한다.  
+
+**`update`**  
+"contacts/:id"에 **put**요청  
+Model.findOneAndUpdate(조건 Object, 수정할 정보 Object, 콜백함수):  
+Contact.findOneAndUpdate({_id:req.params.id}, req.body, function(err, contact)  
+- _id가 req.params.id인 데이터를 req.body로 수정한다.
+
+**`destroy`** 
+Model.deleteOne(조건 Object, 콜백):  
+- 조건에 맞는 document를 1개 찾아 삭제하는 함수.
+
