@@ -3,6 +3,19 @@ https://www.a-mean-blog.com/ko/blog/MEAN-Stack/_/MEAN-Stack-%EC%86%8C%EA%B0%9C
 위 블로그 강좌를 보고 따라해보는 중입니다 🌸
 나중에 다시보기 쉽게 정리 중
 
+[개발환경 구축](#개발환경)  
+[Hello World!]
+- HTTP Methods
+- Express 서버
+- Static, Dynamic Site
+- EJS
+주소록 만들기
+- Mongo DB 설치 및 환경변수 
+- CRUD와 7 Standard Actions
+- 기능 - Index, New, Create
+- 기능 - Show, Edit, Update, Destroy
+- 
+
 ## 개발환경
 #### npm
 - Node Package Manager - node.js의 라이브러리 (https://www.npmjs.com)
