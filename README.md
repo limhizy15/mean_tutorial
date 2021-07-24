@@ -4,17 +4,19 @@ https://www.a-mean-blog.com/ko/blog/MEAN-Stack/_/MEAN-Stack-%EC%86%8C%EA%B0%9C
 나중에 다시보기 쉽게 정리 중
 
 [개발환경 구축](#개발환경)  
-[Hello World!]
-- HTTP Methods
-- Express 서버
-- Static, Dynamic Site
-- EJS
-주소록 만들기
-- Mongo DB 설치 및 환경변수 
-- CRUD와 7 Standard Actions
+[Hello World!](#hello-world!)  
+- [HTTP Methods](#http-methods)  
+- [Express 서버](#express로-서버-실행하기)  
+- [Static, Dynamic Site](#static,-dynamic)  
+- [EJS](#ejs로-dynamic-website-만들기)  
+
+[주소록 만들기](#주소록-만들기)  
+- [Mongo DB 설치 및 환경변수](#환경변수)   
+- [CRUD와 7 Standard Actions](#crud와-7-standard-actions)
 - 기능 - Index, New, Create
 - 기능 - Show, Edit, Update, Destroy
-- 
+
+---
 
 ## 개발환경
 #### npm
